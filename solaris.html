@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--This web-page is primarily in Swedish-->
+<html lang="sv">
+<head>
+  <!-- Basic SEO -->
+  <!-- This section includes metadata that enhances the website's search engine optimization (SEO). -->
+  
+  <!-- Specifies the (recommended) character encoding for the HTML document as UTF-8. -->
+  <meta charset="UTF-8">
+  <!-- Ensures the website is responsive by controlling how the content scales on different devices. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Provides a brief description of the page content for search engines and social media previews. -->
+  <meta name="description" content="Solaris: Utforska planetdata och lär dig mer om vårt solsystem. En interaktiv guide med detaljerad information om planeter och deras egenskaper.">
+  <!-- Lists keywords relevant to the page's content to improve search engine visibility. -->
+  <meta name="keywords" content="Solaris, planeter, solsystem, planetdata, astronomi, vetenskap">
+  <!-- Indicates the author of this page. -->
+  <meta name="author" content="Tobias Thor">
+  <!-- Defines a theme color for the page, commonly used in mobile browsers.
+       This color is displayed in the browser's UI, such as the address bar background on Android. -->
+  <meta name="theme-color" content="#000000">
+
+  <!-- OpenGraph for better sharing on social media -->
+  <!-- OpenGraph metadata enhances how the page appears when shared on social media platforms like Facebook and X (Twitter). -->
+
+  <!-- Specifies the title of the page when shared on social media platforms.
+       This can differ from the <title> tag to optimize for sharing. -->
+  <meta property="og:title" content="Solaris - Utforska Planeter i Solsystemet">
+  <!-- Provides a description of the page content for social media previews. -->
+  <meta property="og:description" content="Lär dig mer om vårt solsystem med Solaris. Utforska planeter, deras egenskaper, och fascinerande fakta.">
+   <!-- Defines the image to be displayed when the page is shared on social media.
+       Replace 'https://example.com/solaris-thumbnail.jpg' with the actual URL of your image. -->
+       <!--HOWEVER FOR THIS SCHOOL PROJECT NO IMAGES ARE ALLOWED!-->
+  <meta property="og:image" content="https://example.com/solaris-thumbnail.jpg">
+  <!-- Specifies the canonical URL of the page for social media.
+       Ensures that shared links point to the correct page, even with tracking parameters. --> 
+  <meta property="og:url" content="https://example.com/solaris">
+  <!-- Defines the type of content being shared. -->
+  <meta property="og:type" content="website">
+  <!-- Specifies the locale (language and regional settings) of the content.
+       'sv_SE' stands for Swedish (Sweden), indicating that the content is in Swedish. -->
+  <meta property="og:locale" content="sv_SE">
+
+  
+  <!-- Title and CSS Links -->
+     
+  <!-- Sets the title of the webpage, which appears in the browser tab and search engine results. -->
+  <title>Solaris - Utforska Planeter i Solsystemet</title>
+  <!-- Links an external CSS file to style the webpage. -->
+  <link rel="stylesheet" href="solaris.css">
+  <!-- Loads a custom font ('Orbitron') from Google Fonts with ,'display=swap' ensures the 
+       text is displayed with a fallback font while the custom font is loading. -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  
+  <!-- Main Content -->
+  <!-- Defines the main content of the page. The 'role="main"' ensures better accessibility by indicating
+       this is the central content area. -->
+  <main role="main">
+    <!-- Represents an article or distinct piece of content.
+           'aria-labelledby="main-title"' associates the article with the <h1> element for screen readers. -->
+    <article aria-labelledby="main-title">
+      <section>
+        <!-- The main heading of the page.
+             The 'id="main-title"' allows it to be referenced by other elements, such as 'aria-labelledby'. -->
+        <h1 id="main-title">Solaris</h1>
+        <p>Sök information om en planet i vårt solsystem och lär dig något nytt varje dag.</p>
+        
+        <!-- A section for the search form. -->
+        <section class="search">
+          
+          <!-- A form element for user input.
+                'id="search-form"' uniquely identifies the form.
+                'aria-labelledby="search-label"' ensures accessibility by associating the form with its label. -->
+         <form id="search-form" aria-labelledby="search-label">
+            
+          <!-- A label for the search input field. 
+                 The 'id="search-label"' associates it with the form via 'aria-labelledby'. -->
+            <label id="search-label" for="search-input"></label>
+            
+            <!-- An input field for entering text.
+                 'type="text"' specifies the field is for text input.
+                 'id="search-input"' uniquely identifies the field.
+                 'placeholder' provides placeholder text as a hint for the user.
+                 'aria-label' ensures screen readers understand the input's purpose. -->
+            <input 
+              type="text" 
+              id="search-input" 
+              placeholder="Sök efter en planet..." 
+              aria-label="Skriv in namnet på en planet för att söka" 
+            >
+            <!-- A submit button for the form.
+                 'aria-label' provides an accessible description for screen readers. -->
+            <button type="submit" aria-label="Klicka för att söka efter planeter">Sök</button>
+          </form>
+        </section>
+
+        <!-- Content within <noscript> tags is displayed only if JavaScript is disabled in the browser. -->
+        <noscript>
+          <!-- A warning section displayed when JavaScript is disabled.
+               'role="alert"' makes it an important announcement for screen readers.
+               'aria-live="assertive"' ensures it is read immediately by screen readers. -->
+          <section class="noscript-warning" role="alert" aria-live="assertive">
+            Den här sidan kräver JavaScript för att fungera korrekt. Vänligen aktivera JavaScript i din webbläsare.
+          </section>
+        </noscript>
+      </section>
+      
+      <!-- A section for dynamically generated content (e.g., planet data from an API).
+             'id="planet-list"' uniquely identifies the section.
+             'aria-live="polite"' informs screen readers to announce changes non-intrusively.
+             'role="region"' and 'aria-label' define the section as a named region for better accessibility. -->
+      <section id="planet-list" aria-live="polite" role="region" aria-label="Lista över planeter">
+      </section>
+    </article>
+  </main>
+  
+  <!-- JavaScript-polyfill -->
+  <!-- Loads a polyfill for the Fetch API to ensure compatibility with older browsers. -->
+  <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch/dist/fetch.umd.js"></script>
+  <!-- Links an external JavaScript file ('solaris.js') that contains the interactive functionality for the page. -->
+  <script src="solaris.js"></script>
+</body>
+</html>
