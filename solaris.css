@@ -57,7 +57,7 @@ button:hover {
 }
 
 /* DYNAMIC CONTENT SECTION STYLING */
-#planet-list {
+#body-list {
     display: flex; /* Uses flexbox layout to align child elements. */
     flex-wrap: wrap; /* Allows the child elements to wrap onto multiple lines if necessary. */
     justify-content: center; /* Centers the child elements horizontally within the container. */
@@ -65,7 +65,7 @@ button:hover {
     padding: 20px; /* Adds padding inside the container for spacing. */
 }
 
-.planet-card {
+.body-card {
     border: 1px solid #ccc; /* Adds a light grey border around each card. */
     padding: 16px; /* Adds internal spacing inside each card. */
     margin: 16px 0; /* Adds vertical spacing between cards. */
@@ -75,7 +75,7 @@ button:hover {
 }
 
 /* STYLING FOR PLANET SYMBOLS */
-.planet-symbol {
+.body-symbol {
     width: 100px; /* Diameter of the circle */
     height: 100px; /* Diameter of the circle */
     border-radius: 50%; /* Makes it a perfect circle */
@@ -84,52 +84,52 @@ button:hover {
 }
 
 /* Specific colors for planets */
-.planet-symbol.sun {
+.body-symbol.sun {
     background-color: yellow; /* Does not work for this planet for some reason. */
 }
 
-.planet-symbol.mercury {
+.body-symbol.mercury {
     background-color: darkgray; /* Does not work for this planet for some reason. */
 }
 
-.planet-symbol.venus {
+.body-symbol.venus {
     background-color: orange;
 }
 
-.planet-symbol.earth {
+.body-symbol.earth {
     background-color: blue; /* Does not work for this planet for some reason. */
 }
 
-.planet-symbol.mars {
+.body-symbol.mars {
     background-color: red;
 }
 
-.planet-symbol.jupiter {
+.body-symbol.jupiter {
     background-color: brown;
 }
 
-.planet-symbol.saturn {
+.body-symbol.saturn {
     background-color: goldenrod; /* Does not work for this planet for some reason. */
 }
 
-.planet-symbol.uranus {
+.body-symbol.uranus {
     background-color: cyan;
 }
 
-.planet-symbol.neptune {
+.body-symbol.neptune {
     background-color: darkblue; /* Does not work for this planet for some reason. */
 }
 
 /* HOVER EFFECT FOR PLANETS */
 /* ! DOES NOT WORK FOR SOME REASON ! */
-.planet:hover {
+.body:hover {
     transform: scale(1.2) rotate(10deg); /* Enlarges and slightly rotates the planet on hover. */
     transition: transform 0.5s ease; /* Smoothly transitions the transform effect over 0.5 seconds. */
 }
 
 /* ANIMATION FOR PLANETS */
 /* ! DOES NOT WORK FOR SOME REASON ! */
-.planet {
+.body {
     opacity: 0; /* Initially hides the element by making it fully transparent. */
     transform: translateY(20px); /* Moves the element 20 pixels downward. */
     animation: fadeIn 1s ease forwards; /* Triggers a fade-in animation with easing and makes the animation stay in its final state. */
@@ -144,7 +144,7 @@ button:hover {
 
 /* RESPONSIVE DESIGN */
 @media (max-width: 600px) {
-    .planet-card {
+    .body-card {
         width: 100%; /* Makes each planet card take up the full width of its container on smaller screens. */
     }
 }
