@@ -46,7 +46,7 @@ async function getBodies() {
     }
 
     console.log('Using API key:', apiKey);
-    
+
     // Make a GET request to fetch celestial bodies
     const response = await fetch('https://n5n3eiyjb0.execute-api.eu-north-1.amazonaws.com/bodies', {
       method: 'GET',
@@ -74,14 +74,24 @@ async function getBodies() {
   }
 }
 
-// Call the function and handle the result
+// Call the function and handle the result, NEW CODE
+getBodies()
+    .then(bodies => {
+        localStorage.setItem('bodies', JSON.stringify(bodies)); // Save as an array
+        console.log('Bodies:', bodies);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+/* Call the function and handle the result, OLD CODE KEPT FOR COMPARISON REASONS AND FUTURE REFERENCE
 getBodies()
   .then(bodies => {
     console.log('Bodies:', bodies);
   })
   .catch(error => {
     console.error('Error:', error);
-  });
+  }); */
 
 // Function to display celestial bodies on the page
 function displayBodies(bodies) {
@@ -188,20 +198,40 @@ document.getElementById('search-form').addEventListener('submit', async (event) 
       return;
     }
   
-    try {
+    /* OLD CODE KEPT FOR COMPARISON REASONS AND FUTURE REFERENCE
+         try {
       const cachedBodies = localStorage.getItem('bodies');
-      const bodies = cachedBodies ? JSON.parse(cachedBodies) : await getBodies();
-  
-      const filteredBodies = bodies.bodies.filter((body) =>
+      const bodies = cachedBodies ? JSON.parse(cachedBodies) : await getBodies(); 
+      END OF OLD CODE */
+
+      // NEW CODE
+      try {
+        let bodies = JSON.parse(localStorage.getItem('bodies')); // Fetch from localStorage
+        if (!bodies) {
+            // If there isn't anything in localStorage, Fetch from API
+            bodies = await getBodies();
+            localStorage.setItem('bodies', JSON.stringify(bodies)); // Save as an array
+        }
+
+      const filteredBodies = bodies.filter((body) => // Changed to bodies.filter() instead of bodies.bodies.filter() for proper functionality
         body.name.toLowerCase().includes(searchTerm) ||
         (body.latinName && body.latinName.toLowerCase().includes(searchTerm)) ||
         (body.type && body.type.toLowerCase().includes(searchTerm))
       );
-  
-      displayBodies(filteredBodies.length ? filteredBodies : []);
+
+      if (filteredBodies.length) {
+        displayBodies(filteredBodies);
+    } else {
+        displayMessage('Inga planeter matchade din sökning.');
+    }
+
+       /* OLD CODE KEPT FOR COMPARISON REASONS
+        displayBodies(filteredBodies.length ? filteredBodies : []);
       if (!filteredBodies.length) {
         displayMessage('Inga planeter matchade din sökning.');
-      }
+      } 
+        END OF OLD CODE */
+     
     } catch (error) {
       console.error('Sökningen misslyckades:', error);
       displayMessage('Ett fel inträffade vid sökning.');
